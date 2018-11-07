@@ -1,0 +1,17 @@
+C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\Texaco.exe.config
+C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\Texaco.exe
+C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\Texaco.pdb
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.csprojResolveAssemblyReference.cache
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Properties.Resources.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.csproj.GenerateResource.cache
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.csproj.CoreCompileInputs.cache
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.exe
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.pdb
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Administrador.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Login.resources
+C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\Npgsql.dll
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.csproj.CopyComplete
+C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Usuarios.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Producto.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Usuario.resources
