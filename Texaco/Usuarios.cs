@@ -65,7 +65,15 @@ namespace Texaco
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-        
+            Usuario usuario = new Usuario("eliminar");
+            usuario.id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            usuario.nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            usuario.dpi = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            usuario.usuario = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            usuario.contraseña = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            usuario.tipo = dataGridView1.CurrentRow.Cells[5].Value.ToString().Equals("True") ? "Administrador" : "Vendedor";
+            usuario.Show();
+            this.Close();
         }
     }
 }

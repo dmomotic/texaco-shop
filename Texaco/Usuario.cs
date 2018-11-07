@@ -60,6 +60,10 @@ namespace Texaco
             {
                 editar();
             }
+            else if (operacion.Equals("eliminar"))
+            {
+                eliminar();
+            }
             ventanaUsuarios();
 
         }
@@ -94,12 +98,12 @@ namespace Texaco
 
                 if (cmd.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show("Usuario registrado");
+                    MessageBox.Show("Empleado registrado");
                     limpiarCampos();
                 }
                 else
                 {
-                    MessageBox.Show("Error al ingresar usuario");
+                    MessageBox.Show("Error al ingresar empleado");
                 }
 
                 conn.Close();
@@ -132,6 +136,33 @@ namespace Texaco
                 else
                 {
                     MessageBox.Show("Error al actualizar la informacion");
+                }
+
+                conn.Close();
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message);
+            }
+        }
+
+        private void eliminar()
+        {
+            try
+            {
+                conn.Open();
+                query += "DELETE FROM usuario ";
+                query += "WHERE id = " + id;
+                NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Empleado eliminado");
+                    limpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar empleado");
                 }
 
                 conn.Close();
@@ -184,6 +215,16 @@ namespace Texaco
                 txtUsuario.Text = usuario;
                 txtContraseña.Text = contraseña;
                 cbxTipo.SelectedItem = tipo;
+            }
+
+            //Si es una eliminacion no permito editar los campos
+            if (operacion.Equals("eliminar"))
+            {
+                txtNombre.Enabled = false;
+                txtDpi.Enabled = false;
+                txtUsuario.Enabled = false;
+                txtContraseña.Enabled = false;
+                cbxTipo.Enabled = false;
             }
         }
     }
