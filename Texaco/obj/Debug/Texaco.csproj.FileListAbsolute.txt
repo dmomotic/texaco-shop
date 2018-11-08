@@ -15,3 +15,4 @@ C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\System.Threading.Tasks.Exten
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Usuarios.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Producto.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Usuario.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Productos.resources
