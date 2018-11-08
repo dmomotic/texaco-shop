@@ -32,6 +32,7 @@ namespace Texaco
                 adp.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
             }
             catch (Exception ex)
             {
@@ -73,6 +74,18 @@ namespace Texaco
             producto.precio_venta = dataGridView1.CurrentRow.Cells[4].Value.ToString();
             producto.Show();
             this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = txtBuscar.Text.Trim();
+            if (busqueda.Equals(""))
+            {
+                ds.Tables[0].DefaultView.RowFilter = "";
+                return;
+            }
+
+            ds.Tables[0].DefaultView.RowFilter = $"nombre LIKE '%{busqueda}%' or codigo_barra LIKE '%{busqueda}%'";
         }
     }
 }
