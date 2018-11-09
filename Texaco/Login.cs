@@ -39,6 +39,7 @@ namespace Texaco
                 NpgsqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
+                    
                     MessageBox.Show("Bienvenido " + usuario);
                     Administrador administrador = new Administrador();
                     administrador.Show();

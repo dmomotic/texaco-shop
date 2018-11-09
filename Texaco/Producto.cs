@@ -77,10 +77,6 @@ namespace Texaco
             }
             else if (operacion.Equals("editar"))
             {
-                if (validarCodigoBarraRepetido())
-                {
-                    return;
-                }
                 editar();
             }
             else if (operacion.Equals("eliminar"))
@@ -280,6 +276,16 @@ namespace Texaco
                 txtNombre.Enabled = false;
                 txtExistencias.Enabled = false;
                 txtPrecioVenta.Enabled = false;
+            }
+        }
+
+        private void txtCodigoBarra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Si es un enter paso al siguiente campo de texto
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
             }
         }
     }

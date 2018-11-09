@@ -80,6 +80,7 @@
             this.txtCodigoBarra.Name = "txtCodigoBarra";
             this.txtCodigoBarra.Size = new System.Drawing.Size(206, 20);
             this.txtCodigoBarra.TabIndex = 16;
+            this.txtCodigoBarra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarra_KeyPress);
             // 
             // label4
             // 

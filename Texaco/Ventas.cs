@@ -44,6 +44,9 @@ namespace Texaco
             string tot = (Double.Parse(pre) * Double.Parse(cant)).ToString();
             dataGridView2.CurrentRow.Cells[5].Value = tot;
             txtProducto.Focus();
+
+            //Calculamos nuevamente el total
+            calcularTotalVenta();
         }
 
         private void dataGridView2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -69,18 +72,169 @@ namespace Texaco
             }
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(dateTimePicker1.Value.ToString());
+            //Valido que existan filas en el datagrid2 de venta
+            if(dataGridView2.Rows.Count > 0)
+            {
+                //Elimino la fila de la lista de venta
+                dataGridView2.Rows.Remove(dataGridView2.CurrentRow);
+            }
         }
 
-        private void Ventas_Load(object sender, EventArgs e)
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Establecemos parametros iniciales
-            dateTimePicker1.Value = DateTime.Now;
-            lblComprobante.Text = obtenerComprobante();
+            //Si da doble clic a la lista de inventario agrego el producto a la lista de venta
+            //Capturo la informacion y realizo los calculos correspondientes
+            id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            codigoBarra = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            nombre = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            existencia = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            precio = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            cantidad = "1";
+            total = (Double.Parse(precio) * Double.Parse(cantidad)).ToString();
 
-            //Cargamos el inventario de productos
+            //Cargo la info al grid de venta
+            dtVenta.Rows.Add(new object[] { id, codigoBarra, nombre, precio, cantidad, total });
+
+            //Limpio cuadro de busqueda
+            txtProducto.Clear();
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            //Verifico que existan productos en la lista de venta
+            if(dataGridView2.Rows.Count > 0)
+            {
+                //Capturo los datos para la insercion en tabla venta
+                string fecha = dateTimePicker1.Value.ToShortDateString();
+                string comprobante = lblComprobante.Text;
+
+                //Realizo insercion en tabla venta
+                try
+                {
+                    conn.Open();
+                    string query = "INSERT INTO venta(comprobante,fecha) values(";
+                    query += "'" + comprobante+ "'";
+                    query += ",'" + fecha + "')";
+                    NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        //Si ya se registro la venta ahora registro el detalle de la venta
+
+                        //Primero obtengo el id del ultimo registro en la tabla venta
+                        NpgsqlDataAdapter adapter = new NpgsqlDataAdapter("SELECT * FROM venta ORDER BY id DESC LIMIT 1;", conn);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        DataRow dataRow = dataTable.Rows[0];
+                        string idVenta = dataRow.ItemArray[0].ToString();
+
+                        //Realizo la insercion por cada fila en la lista de venta
+                        foreach(DataGridViewRow row in dataGridView2.Rows)
+                        {
+                            //Capturamos los datos
+                            string id_producto = row.Cells[0].Value.ToString();
+                            string cantidad_producto = row.Cells[4].Value.ToString();
+                            string precio_producto = row.Cells[3].Value.ToString();
+
+                            //Realizamos insercion
+                            query = "INSERT INTO detalle_venta(id_venta,id_producto,cantidad,precio) VALUES(";
+                            query += idVenta + ",";
+                            query += id_producto + ",";
+                            query += cantidad_producto + ",";
+                            query += precio_producto + ")";
+
+                            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                            if(command.ExecuteNonQuery() <= 0)
+                            {
+                                MessageBox.Show("Error al guardar detalle de compra");
+                            }
+                        }
+
+                        //Cuando toda la transaccion se completo de forma exitosa muestro menaje y limpio componentes
+                        MessageBox.Show("Venta registrada");
+                        DataTable dtaux = dataGridView2.DataSource as DataTable;
+                        if(dtaux != null)
+                        {
+                            dtaux.Rows.Clear();
+                        }
+                        lblComprobante.Text = obtenerComprobante();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al registrar venta");
+                    }
+                    conn.Close();
+
+                    //Actualizamos lista de productos disponibles
+                    cargarInventario();
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show(er.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Aun no ha agregado productos a la lista de venta");
+            }
+
+        }
+
+        private void limpiarCampos()
+        {
+            txtProducto.Clear();
+            dataGridView2.Rows.Clear();
+            txtProducto.Focus();
+        }
+
+        private void dataGridView2_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            //Calculo el total cada vez que se agrega una fila nueva a la lista de venta
+            calcularTotalVenta();
+            //Me posicion en el cuadro para la siguiente busqueda
+            txtProducto.Focus();
+        }
+
+        private void dataGridView2_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            //Calculo el total cada vez que se elimina una fila de la lista de ventas
+            calcularTotalVenta();
+            //Me posicion en el cuadro para la siguiente busqueda
+            txtProducto.Focus();
+        }
+
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            //Utilizado para mostrar menu con opcion de eliminar
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
+            }
+        }
+
+        private void dataGridView2_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //Utilizado para mostrar menu con opcion de eliminar
+            if (e.Button == MouseButtons.Right)
+            {
+                try
+                {
+                    dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    dataGridView2.Rows[e.RowIndex].Selected = true;
+                    dataGridView2.Focus();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+
+        private void cargarInventario()
+        {
             try
             {
                 conn.Open();
@@ -90,11 +244,22 @@ namespace Texaco
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+                conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Ventas_Load(object sender, EventArgs e)
+        {
+            //Establecemos parametros iniciales
+            dateTimePicker1.Value = DateTime.Now;
+            lblComprobante.Text = obtenerComprobante();
+
+            //Cargamos el inventario de productos
+            cargarInventario();
             
             //Inicializamos el grid de ventas
             inicialidarGridVenta();
@@ -172,6 +337,23 @@ namespace Texaco
                     //Limpio cuadro de busqueda
                     txtProducto.Clear();
                 }
+            }
+        }
+
+        private void calcularTotalVenta()
+        {
+            if(dataGridView2.Rows.Count <= 0)
+            {
+                lblTotal.Text = "0.00";
+            }
+            else
+            {
+                double total = 0.0;
+                foreach(DataGridViewRow item in dataGridView2.Rows)
+                {
+                    total += Double.Parse(item.Cells[5].Value.ToString());
+                }
+                lblTotal.Text = total.ToString();
             }
         }
     }
