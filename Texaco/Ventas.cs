@@ -136,7 +136,7 @@ namespace Texaco
                             //Capturamos los datos
                             string id_producto = row.Cells[0].Value.ToString();
                             string cantidad_producto = row.Cells[4].Value.ToString();
-                            string precio_producto = row.Cells[3].Value.ToString();
+                            string precio_producto = row.Cells[3].Value.ToString().Replace(',','.');
 
                             //Realizamos insercion
                             query = "INSERT INTO detalle_venta(id_venta,id_producto,cantidad,precio) VALUES(";
@@ -245,6 +245,12 @@ namespace Texaco
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
                 conn.Close();
+
+                //Coloco solo dos decimales en la columna precio
+                foreach(DataGridViewRow item in dataGridView1.Rows)
+                {
+                    item.Cells[4].Value = (Math.Truncate(100 * decimal.Parse(item.Cells[4].Value.ToString()))/100).ToString();
+                }
             }
             catch (Exception ex)
             {

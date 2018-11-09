@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -234,14 +235,14 @@ namespace Texaco
             }
             /*Valido el formato del precio de venta*/
             double numero;
-            if (!Double.TryParse(precio_venta, out numero))
+            if (!Double.TryParse(precio_venta, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo, out numero))
             {
                 MessageBox.Show("Por favor ingrese un precio de venta valido");
                 return true;
             }
             else
             {
-                precio_venta = numero.ToString();
+                precio_venta = numero.ToString().Replace(',','.');
             }
             return false;
         }
