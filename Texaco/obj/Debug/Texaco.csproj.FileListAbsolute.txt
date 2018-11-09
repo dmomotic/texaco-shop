@@ -16,3 +16,4 @@ C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Usuarios.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Producto.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Usuario.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Productos.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Ventas.resources

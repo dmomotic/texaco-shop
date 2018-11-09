@@ -28,5 +28,13 @@ namespace Texaco
             Productos productos = new Productos();
             productos.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Ventas ventas = new Ventas();
+            ventas.Show();
+        }
+        
+
     }
 }
