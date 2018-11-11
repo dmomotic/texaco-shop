@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.btnEmpleados = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnVentas = new System.Windows.Forms.Button();
+            this.btnProductos = new System.Windows.Forms.Button();
+            this.btnReportes = new System.Windows.Forms.Button();
+            this.btnRegistroVentas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEmpleados
@@ -44,35 +46,58 @@
             this.btnEmpleados.UseVisualStyleBackColor = true;
             this.btnEmpleados.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnVentas
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(188, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(157, 119);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Ventas";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentas.Location = new System.Drawing.Point(188, 12);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(157, 119);
+            this.btnVentas.TabIndex = 1;
+            this.btnVentas.Text = "Ventas";
+            this.btnVentas.UseVisualStyleBackColor = true;
+            this.btnVentas.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnProductos
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(364, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(157, 119);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Productos";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductos.Location = new System.Drawing.Point(364, 12);
+            this.btnProductos.Name = "btnProductos";
+            this.btnProductos.Size = new System.Drawing.Size(157, 119);
+            this.btnProductos.TabIndex = 2;
+            this.btnProductos.Text = "Productos";
+            this.btnProductos.UseVisualStyleBackColor = true;
+            this.btnProductos.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.Location = new System.Drawing.Point(188, 156);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(157, 119);
+            this.btnReportes.TabIndex = 3;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
+            // btnRegistroVentas
+            // 
+            this.btnRegistroVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistroVentas.Location = new System.Drawing.Point(364, 156);
+            this.btnRegistroVentas.Name = "btnRegistroVentas";
+            this.btnRegistroVentas.Size = new System.Drawing.Size(157, 119);
+            this.btnRegistroVentas.TabIndex = 4;
+            this.btnRegistroVentas.Text = "Registro Ventas";
+            this.btnRegistroVentas.UseVisualStyleBackColor = true;
             // 
             // Administrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 287);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(541, 298);
+            this.Controls.Add(this.btnRegistroVentas);
+            this.Controls.Add(this.btnReportes);
+            this.Controls.Add(this.btnProductos);
+            this.Controls.Add(this.btnVentas);
             this.Controls.Add(this.btnEmpleados);
             this.Name = "Administrador";
             this.Text = "Administrador";
@@ -83,7 +108,9 @@
         #endregion
 
         private System.Windows.Forms.Button btnEmpleados;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnVentas;
+        private System.Windows.Forms.Button btnProductos;
+        private System.Windows.Forms.Button btnReportes;
+        private System.Windows.Forms.Button btnRegistroVentas;
     }
 }

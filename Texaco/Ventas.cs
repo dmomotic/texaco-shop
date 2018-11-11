@@ -258,6 +258,11 @@ namespace Texaco
             }
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void Ventas_Load(object sender, EventArgs e)
         {
             //Establecemos parametros iniciales
