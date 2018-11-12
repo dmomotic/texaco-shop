@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Texaco.Reportes
 {
-    public partial class VentanaReporteVenta : Form
+    public partial class ReporteForm : Form
     {
-        public VentanaReporteVenta()
+        public ReporteForm()
         {
             InitializeComponent();
         }

@@ -88,6 +88,7 @@
             this.btnRegistroVentas.TabIndex = 4;
             this.btnRegistroVentas.Text = "Registro Ventas";
             this.btnRegistroVentas.UseVisualStyleBackColor = true;
+            this.btnRegistroVentas.Click += new System.EventHandler(this.btnRegistroVentas_Click);
             // 
             // Administrador
             // 

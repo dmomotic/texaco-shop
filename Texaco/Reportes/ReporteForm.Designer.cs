@@ -1,6 +1,8 @@
-﻿namespace Texaco.Reportes
+﻿using Texaco.Reportes;
+
+namespace Texaco.Reportes
 {
-    partial class VentanaReporteVenta
+    partial class ReporteForm
     {
         /// <summary>
         /// Required designer variable.

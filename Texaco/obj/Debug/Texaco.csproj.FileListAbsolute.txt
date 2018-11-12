@@ -36,4 +36,6 @@ C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\CrystalDecisions.ReportAppSe
 C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\stdole.dll
-C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Reportes.VentanaReporteVenta.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.RegistroVentas.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.VentanaReportes.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Reportes.ReporteForm.resources
