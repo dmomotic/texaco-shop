@@ -60,26 +60,40 @@ namespace Texaco
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Producto producto = new Producto("editar");
-            producto.id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            producto.codigo_barra = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            producto.nombre = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            producto.existencia = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            producto.precio_venta = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            producto.Show();
-            this.Close();
+            if(dataGridView1.CurrentRow != null)
+            {
+                Producto producto = new Producto("editar");
+                producto.id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                producto.codigo_barra = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                producto.nombre = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                producto.existencia = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                producto.precio_venta = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                producto.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un producto de la lista");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Producto producto = new Producto("eliminar");
-            producto.id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            producto.codigo_barra = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            producto.nombre = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            producto.existencia = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            producto.precio_venta = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            producto.Show();
-            this.Close();
+            if(dataGridView1.CurrentRow != null)
+            {
+                Producto producto = new Producto("eliminar");
+                producto.id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                producto.codigo_barra = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                producto.nombre = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                producto.existencia = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                producto.precio_venta = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                producto.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un producto de la lista");
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
