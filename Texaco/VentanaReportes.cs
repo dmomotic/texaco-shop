@@ -39,56 +39,71 @@ namespace Texaco
         {
             string fechaInicial="";
             string fechaFinal="";
+            string tipo = "";
 
-            //POR PRODUCTO 
-            switch (rbProducto.Checked)
+            //DIARIO
+            if (rbDiario.Checked)
             {
-                case true:
-                    //DIARIO
-                    if (rbDiario.Checked)
-                    {
-                        fechaInicial = dtpFechaInicial.Value.ToShortDateString();
-                        fechaFinal = fechaInicial;
-                    }
-                    //RANGO DE FECHAS
-                    else if (rbRangoFechas.Checked)
-                    {
-                        fechaInicial = dtpFechaInicial.Value.ToShortDateString();
-                        fechaFinal = dtpFechaFinal.Value.ToShortDateString();
-                        if(dtpFechaInicial.Value > dtpFechaFinal.Value)
-                        {
-                            MessageBox.Show("La fecha inicial debe ser menor a la fecha final");
-                            return;
-                        }
-                    }
-                    generarReportePorProducto(fechaInicial, fechaFinal);
-                    break;
+                fechaInicial = dtpFechaInicial.Value.ToShortDateString();
+                fechaFinal = fechaInicial;
             }
+            //MENSUAL
+            else if(rbMensual.Checked)
+            {
+                DateTime date = dtpFechaInicial.Value;
+                var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+                var lastDayOfMonth = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
+                fechaInicial = firstDayOfMonth.ToShortDateString();
+                fechaFinal = lastDayOfMonth.ToShortDateString();
+            }
+            //RANGO DE FECHAS
+            else if (rbRangoFechas.Checked)
+            {
+                fechaInicial = dtpFechaInicial.Value.ToShortDateString();
+                fechaFinal = dtpFechaFinal.Value.ToShortDateString();
+                if(dtpFechaInicial.Value > dtpFechaFinal.Value)
+                {
+                    MessageBox.Show("La fecha inicial debe ser menor a la fecha final");
+                    return;
+                }
+            }
+            //TIPO DE REPORTE
+            tipo = rbProducto.Checked ? "producto" : "dia";
+            generarReporte(fechaInicial, fechaFinal, tipo);                  
         }
 
-        private void generarReportePorProducto(string fechaInicial, string fechaFinal)
+        private void generarReporte(string fInicial, string fFinal, string tipo)
         {
             string nombreParametro = "p_fecha_inicial";
             string nombreParametro2 = "p_fecha_final";
             ReporteForm form = new ReporteForm();
-            ReporteVentasDiarias oRep = new ReporteVentasDiarias();
+            
+            if (tipo.Equals("producto"))
+            {
+                ReporteVentasDiarias oRep = new ReporteVentasDiarias();
+                form.crystalReportViewer1.ReportSource = oRep;
+            }
+            else if (tipo.Equals("dia"))
+            {
+                ReporteVentasDiarias2 oRep = new ReporteVentasDiarias2();
+                form.crystalReportViewer1.ReportSource = oRep;
+            }
             /*PARAMETRO 1*/
             ParameterField pf = new ParameterField();
             ParameterFields pfs = new ParameterFields();
             ParameterDiscreteValue pdv = new ParameterDiscreteValue();
             pf.Name = nombreParametro;
-            pdv.Value = fechaInicial;
+            pdv.Value = fInicial;
             pf.CurrentValues.Add(pdv);
             pfs.Add(pf);
             /*PARAMETRO 2*/
             ParameterField pf2 = new ParameterField();
             ParameterDiscreteValue pdv2 = new ParameterDiscreteValue();
             pf2.Name = nombreParametro2;
-            pdv2.Value = fechaFinal;
+            pdv2.Value = fFinal;
             pf2.CurrentValues.Add(pdv2);
             pfs.Add(pf2);
             form.crystalReportViewer1.ParameterFieldInfo = pfs;
-            form.crystalReportViewer1.ReportSource = oRep;
             form.Show();
         }
 
@@ -99,6 +114,8 @@ namespace Texaco
             {
                 lblFechaFinal.Visible = false;
                 dtpFechaFinal.Visible = false;
+                dtpFechaInicial.Format = DateTimePickerFormat.Long;
+                dtpFechaInicial.ShowUpDown = false;
             }
         }
 
@@ -109,6 +126,9 @@ namespace Texaco
             {
                 lblFechaFinal.Visible = false;
                 dtpFechaFinal.Visible = false;
+                dtpFechaInicial.Format = DateTimePickerFormat.Custom;
+                dtpFechaInicial.CustomFormat = "MMMM-yyyy";
+                dtpFechaInicial.ShowUpDown = true;
             }        
         }
 
@@ -119,6 +139,8 @@ namespace Texaco
             {
                 lblFechaFinal.Visible = true;
                 dtpFechaFinal.Visible = true;
+                dtpFechaInicial.Format = DateTimePickerFormat.Long;
+                dtpFechaInicial.ShowUpDown = false;
             }
         }
     }

@@ -101,6 +101,12 @@
       <DependentUpon>ReporteVentasDiarias.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ReporteVentasDiarias2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteVentasDiarias2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="VentanaReportes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,10 @@
     <EmbeddedResource Include="Reportes\ReporteVentasDiarias.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteVentasDiarias.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteVentasDiarias2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteVentasDiarias2.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaReportes.resx">
       <DependentUpon>VentanaReportes.cs</DependentUpon>

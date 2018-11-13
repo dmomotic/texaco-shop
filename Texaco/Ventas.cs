@@ -238,7 +238,7 @@ namespace Texaco
             try
             {
                 conn.Open();
-                adp = new NpgsqlDataAdapter("Select * from producto", conn);
+                adp = new NpgsqlDataAdapter("Select id, codigo_barra, nombre, existencia, precio_venta from producto where borrado = false", conn);
                 ds = new DataSet();
                 adp.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];

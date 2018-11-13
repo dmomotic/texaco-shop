@@ -96,7 +96,7 @@ namespace Texaco
                 try
                 {
                     conn.Open();
-                    string qr = "SELECT * FROM producto WHERE codigo_barra = '" + codigo_barra + "'";
+                    string qr = "SELECT * FROM producto WHERE codigo_barra = '" + codigo_barra + "' and borrado = false" ;
                     NpgsqlCommand cmd = new NpgsqlCommand(qr,conn);
                     NpgsqlDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
@@ -185,7 +185,7 @@ namespace Texaco
             try
             {
                 conn.Open();
-                query += "DELETE FROM producto ";
+                query += "UPDATE producto set borrado = true ";
                 query += "WHERE id = " + id;
                 NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
@@ -235,14 +235,14 @@ namespace Texaco
             }
             /*Valido el formato del precio de venta*/
             double numero;
-            if (!Double.TryParse(precio_venta, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo, out numero))
+            if (!Double.TryParse(precio_venta.Replace(',', '.'), System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo, out numero))
             {
                 MessageBox.Show("Por favor ingrese un precio de venta valido");
                 return true;
             }
             else
             {
-                precio_venta = numero.ToString().Replace(',','.');
+                precio_venta = numero.ToString().Replace(',', '.');
             }
             return false;
         }

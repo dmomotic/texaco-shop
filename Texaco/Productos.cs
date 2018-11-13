@@ -27,12 +27,18 @@ namespace Texaco
             try
             {
                 conn.Open();
-                adp = new NpgsqlDataAdapter("Select * from producto", conn);
+                adp = new NpgsqlDataAdapter("Select id, codigo_barra, nombre, existencia, precio_venta from producto where borrado = false", conn);
                 ds = new DataSet();
                 adp.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+                
+                //Coloco solo dos decimales en la columna precio
+                foreach (DataGridViewRow item in dataGridView1.Rows)
+                {
+                    item.Cells[4].Value = (Math.Truncate(100 * decimal.Parse(item.Cells[4].Value.ToString())) / 100).ToString();
+                }
             }
             catch (Exception ex)
             {
