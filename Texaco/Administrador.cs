@@ -23,6 +23,7 @@ namespace Texaco
         private void button1_Click(object sender, EventArgs e)
         {
             Usuarios usuarios = new Usuarios();
+            usuarios.id_usuario = id_usuario;
             usuarios.Show();
         }
 
@@ -35,6 +36,7 @@ namespace Texaco
         private void button2_Click(object sender, EventArgs e)
         {
             Ventas ventas = new Ventas();
+            ventas.id_usuario = id_usuario;
             ventas.Show();
         }
 

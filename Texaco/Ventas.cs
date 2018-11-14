@@ -21,6 +21,7 @@ namespace Texaco
         DataTable dtVenta;
 
         string id, codigoBarra, nombre, precio, cantidad, total, existencia;
+        public string id_usuario;
 
         public Ventas()
         {
@@ -114,9 +115,10 @@ namespace Texaco
                 try
                 {
                     conn.Open();
-                    string query = "INSERT INTO venta(comprobante,fecha) values(";
+                    string query = "INSERT INTO venta(comprobante,fecha, id_usuario) values(";
                     query += "'" + comprobante+ "'";
-                    query += ",'" + fecha + "')";
+                    query += ",'" + fecha + "'";
+                    query += "," + id_usuario + ")";
                     NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
                     if (cmd.ExecuteNonQuery() > 0)

@@ -151,7 +151,7 @@ namespace Texaco
             try
             {
                 conn.Open();
-                query += "DELETE FROM usuario ";
+                query += "UPDATE usuario SET borrado = true ";
                 query += "WHERE id = " + id;
                 NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 

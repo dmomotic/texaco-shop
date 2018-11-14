@@ -34,7 +34,7 @@ namespace Texaco
             try
             {
                 conn.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand("Select id, administrador from usuario where usuario='" + usuario + "'" + "and contraseña='" + contraseña + "'", conn);
+                NpgsqlCommand cmd = new NpgsqlCommand("Select id, administrador from usuario where usuario='" + usuario + "'" + "and contraseña='" + contraseña + "' and borrado = false", conn);
                 NpgsqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
