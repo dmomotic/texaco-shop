@@ -34,25 +34,35 @@ namespace Texaco
             try
             {
                 conn.Open();
-                //valido si es un administrador
-                NpgsqlCommand cmd = new NpgsqlCommand("Select * from usuario where usuario='" + usuario +"'"+"and contraseña='" +contraseña + "' and administrador=true", conn);
+                NpgsqlCommand cmd = new NpgsqlCommand("Select id, administrador from usuario where usuario='" + usuario + "'" + "and contraseña='" + contraseña + "'", conn);
                 NpgsqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    
-                    MessageBox.Show("Bienvenido " + usuario);
-                    Administrador administrador = new Administrador();
-                    administrador.Show();
-                    this.Hide();
+                    bool administrador = (bool)dr["administrador"];
+                    string id_usuario = dr["id"].ToString();
+
+                    //Si es administrador
+                    if (administrador)
+                    {
+                        MessageBox.Show("Bienvenido " + usuario);
+                        Administrador admin = new Administrador();
+                        admin.id_usuario = id_usuario;
+                        admin.Show();
+                        this.Hide();
+                    }
+                    //
+                    else
+                    {
+                        MessageBox.Show("No soy administrador");
+                    }
                 }
                 else
                 {
-                    //Valido que no existan las credenciales
-                    MessageBox.Show("Credenciales incorrectas");
-                    txtUsuario.Clear();
+                    MessageBox.Show("Credenciales invalidas");
                     txtContraseña.Clear();
+                    txtUsuario.Clear();
                 }
-                
+                  
                 conn.Close();
             }
             catch (Exception er)

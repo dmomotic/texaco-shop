@@ -39,3 +39,4 @@ C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\stdole.dll
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.RegistroVentas.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.VentanaReportes.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Reportes.ReporteForm.resources
+C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Compras.resources

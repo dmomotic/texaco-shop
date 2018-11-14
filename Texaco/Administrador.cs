@@ -13,6 +13,8 @@ namespace Texaco
 {
     public partial class Administrador : Form
     {
+        public string id_usuario;
+
         public Administrador()
         {
             InitializeComponent();
@@ -46,6 +48,18 @@ namespace Texaco
         {
             RegistroVentas registroVentas = new RegistroVentas();
             registroVentas.Show();
+        }
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            Compras compras = new Compras();
+            compras.id_usuario = id_usuario;
+            compras.Show();
+        }
+
+        private void Administrador_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

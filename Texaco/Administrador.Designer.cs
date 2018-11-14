@@ -33,6 +33,7 @@
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnRegistroVentas = new System.Windows.Forms.Button();
+            this.btnCompras = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEmpleados
@@ -90,11 +91,23 @@
             this.btnRegistroVentas.UseVisualStyleBackColor = true;
             this.btnRegistroVentas.Click += new System.EventHandler(this.btnRegistroVentas_Click);
             // 
+            // btnCompras
+            // 
+            this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompras.Location = new System.Drawing.Point(12, 156);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(157, 119);
+            this.btnCompras.TabIndex = 5;
+            this.btnCompras.Text = "Compras";
+            this.btnCompras.UseVisualStyleBackColor = true;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
+            // 
             // Administrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 298);
+            this.Controls.Add(this.btnCompras);
             this.Controls.Add(this.btnRegistroVentas);
             this.Controls.Add(this.btnReportes);
             this.Controls.Add(this.btnProductos);
@@ -102,6 +115,7 @@
             this.Controls.Add(this.btnEmpleados);
             this.Name = "Administrador";
             this.Text = "Administrador";
+            this.Load += new System.EventHandler(this.Administrador_Load);
             this.ResumeLayout(false);
 
         }
@@ -113,5 +127,6 @@
         private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Button btnRegistroVentas;
+        private System.Windows.Forms.Button btnCompras;
     }
 }
