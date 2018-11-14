@@ -20,7 +20,7 @@ namespace Texaco
 
         DataTable dtCompra;
 
-        string comprobante, fecha, id_compra, id_producto, cantidad, precio_compra, codigo_barra, nombre_producto;
+        string fecha, id_producto, cantidad, precio_compra, codigo_barra, nombre_producto;
         public string id_usuario;
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
@@ -121,7 +121,73 @@ namespace Texaco
             //Valido que existan productos en la lista de compras
             if (dataGridView2.Rows.Count > 0)
             {
+                //Capturo los datos para la insercion en tabla compra
+                fecha = dtpFecha.Value.ToShortDateString();
 
+                //Realizo insercion en tabla compra
+                try
+                {
+                    conn.Open();
+                    string query = "INSERT INTO compra(fecha,id_usuario) values(";
+                    query += "'" + fecha + "'";
+                    query += "," + id_usuario + ")";
+                    NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        //Si ya se registro la compra ahora registro el detalle de la compra
+
+                        //Primero obtengo el id del ultimo registro en la tabla venta
+                        NpgsqlDataAdapter adapter = new NpgsqlDataAdapter("SELECT * FROM compra ORDER BY id DESC LIMIT 1;", conn);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        DataRow dataRow = dataTable.Rows[0];
+                        string idCompra = dataRow.ItemArray[0].ToString();
+
+                        //Realizo la insercion por cada fila en la lista de venta
+                        foreach (DataGridViewRow row in dataGridView2.Rows)
+                        {
+                            //Capturamos los datos
+                            id_producto = row.Cells[0].Value.ToString();
+                            cantidad = row.Cells[4].Value.ToString();
+                            precio_compra = row.Cells[3].Value.ToString().Replace(',', '.');
+
+                            //Realizamos insercion
+                            query = "INSERT INTO detalle_compra(id_compra,id_producto,cantidad,precio_compra) VALUES(";
+                            query += idCompra + ",";
+                            query += id_producto + ",";
+                            query += cantidad + ",";
+                            query += precio_compra + ")";
+
+                            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+                            if (command.ExecuteNonQuery() <= 0)
+                            {
+                                MessageBox.Show("Error al guardar detalle de compra");
+                            }
+                        }
+
+                        //Cuando toda la transaccion se completo de forma exitosa muestro menaje y limpio componentes
+                        MessageBox.Show("Compra registrada");
+                        DataTable dtaux = dataGridView2.DataSource as DataTable;
+                        if (dtaux != null)
+                        {
+                            dtaux.Rows.Clear();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al registrar compra");
+                    }
+                    conn.Close();
+
+                    //Actualizamos lista de productos disponibles
+                    CargarInventario();
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show(er.Message);
+                }
             }
             else
             {
