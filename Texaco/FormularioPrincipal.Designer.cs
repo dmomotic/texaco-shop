@@ -29,23 +29,21 @@
         private void InitializeComponent()
         {
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.panelBarraTitulo = new System.Windows.Forms.Panel();
-            this.panelMenu = new System.Windows.Forms.Panel();
             this.panelFormulario = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelMenu = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnVenta = new System.Windows.Forms.Button();
+            this.panelBarraTitulo = new System.Windows.Forms.Panel();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.panelContenedor.SuspendLayout();
-            this.panelBarraTitulo.SuspendLayout();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
@@ -62,35 +60,6 @@
             this.panelContenedor.Size = new System.Drawing.Size(1000, 650);
             this.panelContenedor.TabIndex = 0;
             // 
-            // panelBarraTitulo
-            // 
-            this.panelBarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(93)))), ((int)(((byte)(142)))));
-            this.panelBarraTitulo.Controls.Add(this.btnMinimizar);
-            this.panelBarraTitulo.Controls.Add(this.btnCerrar);
-            this.panelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarraTitulo.Location = new System.Drawing.Point(0, 0);
-            this.panelBarraTitulo.Name = "panelBarraTitulo";
-            this.panelBarraTitulo.Size = new System.Drawing.Size(1000, 40);
-            this.panelBarraTitulo.TabIndex = 0;
-            this.panelBarraTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarraTitulo_MouseMove);
-            // 
-            // panelMenu
-            // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(41)))), ((int)(((byte)(68)))));
-            this.panelMenu.Controls.Add(this.pictureBox1);
-            this.panelMenu.Controls.Add(this.button7);
-            this.panelMenu.Controls.Add(this.button6);
-            this.panelMenu.Controls.Add(this.button5);
-            this.panelMenu.Controls.Add(this.button4);
-            this.panelMenu.Controls.Add(this.button3);
-            this.panelMenu.Controls.Add(this.button2);
-            this.panelMenu.Controls.Add(this.button1);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 40);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(175, 610);
-            this.panelMenu.TabIndex = 1;
-            // 
             // panelFormulario
             // 
             this.panelFormulario.BackColor = System.Drawing.SystemColors.Control;
@@ -100,17 +69,21 @@
             this.panelFormulario.Size = new System.Drawing.Size(825, 610);
             this.panelFormulario.TabIndex = 2;
             // 
-            // pictureBox1
+            // panelMenu
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::Texaco.Properties.Resources.Mobile_Menu_Icon;
-            this.pictureBox1.Location = new System.Drawing.Point(138, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 31);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(41)))), ((int)(((byte)(68)))));
+            this.panelMenu.Controls.Add(this.button7);
+            this.panelMenu.Controls.Add(this.button6);
+            this.panelMenu.Controls.Add(this.button5);
+            this.panelMenu.Controls.Add(this.button4);
+            this.panelMenu.Controls.Add(this.button3);
+            this.panelMenu.Controls.Add(this.button2);
+            this.panelMenu.Controls.Add(this.btnVenta);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelMenu.Location = new System.Drawing.Point(0, 40);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(175, 610);
+            this.panelMenu.TabIndex = 1;
             // 
             // button7
             // 
@@ -220,23 +193,36 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnVenta
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button1.Image = global::Texaco.Properties.Resources.venta;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 182);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 34);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Realizar venta";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnVenta.FlatAppearance.BorderSize = 0;
+            this.btnVenta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
+            this.btnVenta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
+            this.btnVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenta.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnVenta.Image = global::Texaco.Properties.Resources.venta;
+            this.btnVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVenta.Location = new System.Drawing.Point(0, 182);
+            this.btnVenta.Name = "btnVenta";
+            this.btnVenta.Size = new System.Drawing.Size(175, 34);
+            this.btnVenta.TabIndex = 0;
+            this.btnVenta.Text = "Realizar venta";
+            this.btnVenta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVenta.UseVisualStyleBackColor = true;
+            this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
+            // 
+            // panelBarraTitulo
+            // 
+            this.panelBarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(93)))), ((int)(((byte)(142)))));
+            this.panelBarraTitulo.Controls.Add(this.btnMinimizar);
+            this.panelBarraTitulo.Controls.Add(this.btnCerrar);
+            this.panelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBarraTitulo.Location = new System.Drawing.Point(0, 0);
+            this.panelBarraTitulo.Name = "panelBarraTitulo";
+            this.panelBarraTitulo.Size = new System.Drawing.Size(1000, 40);
+            this.panelBarraTitulo.TabIndex = 0;
+            this.panelBarraTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarraTitulo_MouseMove);
             // 
             // btnMinimizar
             // 
@@ -275,9 +261,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormularioPrincipal";
             this.panelContenedor.ResumeLayout(false);
-            this.panelBarraTitulo.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelBarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
@@ -292,13 +277,12 @@
         private System.Windows.Forms.Panel panelBarraTitulo;
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.PictureBox btnMinimizar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVenta;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

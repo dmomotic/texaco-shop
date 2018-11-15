@@ -13,6 +13,9 @@ namespace Texaco
 {
     public partial class FormularioPrincipal : Form
     {
+        public string id_usuario;
+        public bool administrador;
+
         public FormularioPrincipal()
         {
             InitializeComponent();
@@ -92,14 +95,16 @@ namespace Texaco
             {
                 formulario = new Forms();
                 formulario.TopLevel = false;
-                //formulario.FormBorderStyle = FormBorderStyle.None;
-                //formulario.Dock = DockStyle.Fill;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                formulario.Location = new Point((panelContenedor.Width + panelMenu.Width - formulario.Width) / 2, (panelContenedor.Height + panelBarraTitulo.Height - formulario.Height) / 2);
+                formulario.Anchor = AnchorStyles.None;
                 panelContenedor.Controls.Add(formulario);
                 panelContenedor.Tag = formulario;
                 formulario.Show();
 
                 formulario.BringToFront();
-                // formulario.FormClosed += new FormClosedEventHandler(CloseForms);               
+                formulario.FormClosed += new FormClosedEventHandler(CloseForms);               
             }
             else
             {
@@ -115,16 +120,16 @@ namespace Texaco
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void CloseForms(object sender, FormClosedEventArgs e)
         {
-            if(panelMenu.Width == 175)
-            {
-                panelMenu.Width = 60;
-            }
-            else
-            {
-                panelMenu.Width = 175;
-            }
+            if (Application.OpenForms["Ventas"] == null)
+                btnVenta.BackColor = Color.FromArgb(4, 41, 68);
+        }
+
+        private void btnVenta_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel<Ventas>();
+            btnVenta.BackColor = Color.FromArgb(12, 61, 92);
         }
     }
 }

@@ -40,5 +40,4 @@ C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.RegistroVentas.resour
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.VentanaReportes.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Reportes.ReporteForm.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Compras.resources
-C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Login2.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.FormularioPrincipal.resources

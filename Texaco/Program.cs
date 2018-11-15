@@ -16,7 +16,7 @@ namespace Texaco
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormularioPrincipal());
+            Application.Run(new Login());
         }
     }
 }
