@@ -23,6 +23,7 @@ namespace Texaco
         public string usuario;
         public string contraseña;
         public string tipo;
+        public Panel panelContenedor;
 
         string query = "";
 
@@ -65,8 +66,20 @@ namespace Texaco
                 eliminar();
             }
             ventanaUsuarios();
-
+            ActualizarDatos();
         }
+
+        private void ActualizarDatos()
+        {
+            Usuarios formulario;
+            formulario = panelContenedor.Controls.OfType<Usuarios>().FirstOrDefault();
+            //si el formulario/instancia no existe, creamos nueva instancia y mostramos
+            if (formulario != null)
+            {
+                formulario.CargarDatos();
+            }
+        }
+
 
         private void limpiarCampos()
         {
@@ -175,9 +188,8 @@ namespace Texaco
 
         private void ventanaUsuarios()
         {
-            Usuarios usuarios = new Usuarios();
-            usuarios.Show();
             this.Close();
+            this.Dispose();
         }
 
         private bool erroresEnCampos()
@@ -225,6 +237,15 @@ namespace Texaco
                 txtUsuario.Enabled = false;
                 txtContraseña.Enabled = false;
                 cbxTipo.Enabled = false;
+            }
+        }
+
+        private void txtDpi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+                return;
             }
         }
     }

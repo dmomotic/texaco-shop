@@ -17,6 +17,7 @@ namespace Texaco
         NpgsqlDataAdapter adp;
         DataSet ds;
         public string id_usuario;
+        public Panel panelContenedor;
 
         public Usuarios()
         {
@@ -27,11 +28,7 @@ namespace Texaco
         {
             try
             {
-                conn.Open();
-                adp = new NpgsqlDataAdapter("Select * from usuario where borrado = false", conn);
-                ds = new DataSet();
-                adp.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
+                CargarDatos();
             }
             catch (Exception ex)
             {
@@ -39,16 +36,27 @@ namespace Texaco
             }
         }
 
+        public void CargarDatos()
+        {
+            conn.Open();
+            adp = new NpgsqlDataAdapter("Select * from usuario where borrado = false", conn);
+            ds = new DataSet();
+            adp.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+            conn.Close();
+        }
+
         private void btnMenu_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario("nuevo");
+            usuario.panelContenedor = panelContenedor;
             usuario.Show();
-            this.Close();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -62,8 +70,8 @@ namespace Texaco
                 usuario.usuario = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 usuario.contraseña = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 usuario.tipo = dataGridView1.CurrentRow.Cells[5].Value.ToString().Equals("True") ? "Administrador" : "Vendedor";
+                usuario.panelContenedor = panelContenedor;
                 usuario.Show();
-                this.Close();
             }
             else
             {
@@ -87,8 +95,8 @@ namespace Texaco
                 usuario.usuario = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 usuario.contraseña = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 usuario.tipo = dataGridView1.CurrentRow.Cells[5].Value.ToString().Equals("True") ? "Administrador" : "Vendedor";
+                usuario.panelContenedor = panelContenedor;
                 usuario.Show();
-                this.Close();
             }
             else
             {

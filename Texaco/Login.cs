@@ -90,14 +90,19 @@ namespace Texaco
                     formulario.id_usuario = dr["id"].ToString(); ;
                     //Indico si el usuario es administrador o no
                     formulario.administrador = (bool)dr["administrador"];
+                    formulario.login = this;
+                    formulario.lblUsuario.Text = usuario.ToUpper();
                     formulario.Show();
+                    txtUsuario.Clear();
+                    txtContraseña.Clear();
+                    txtUsuario.Focus();
+                    txtContraseña.Focus();
+                    btnIngresar.Focus();
                     this.Hide();
                 }
                 else
                 {
                     MessageBox.Show("Credenciales invalidas");
-                    txtContraseña.Clear();
-                    txtUsuario.Clear();
                 }
                 conn.Close();
             }
@@ -118,6 +123,12 @@ namespace Texaco
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Info form = new Info();
+            form.ShowDialog();
         }
     }
 }

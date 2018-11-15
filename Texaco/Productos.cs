@@ -17,12 +17,19 @@ namespace Texaco
         NpgsqlDataAdapter adp;
         DataSet ds;
 
+        public Panel panelContenedor;
+
         public Productos()
         {
             InitializeComponent();
         }
 
         private void Productos_Load(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        public void CargarDatos()
         {
             try
             {
@@ -33,7 +40,7 @@ namespace Texaco
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
-                
+                conn.Close();
                 //Coloco solo dos decimales en la columna precio
                 foreach (DataGridViewRow item in dataGridView1.Rows)
                 {
@@ -49,13 +56,14 @@ namespace Texaco
         private void btnMenu_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             Producto producto = new Producto("nuevo");
+            producto.panelContenedor = panelContenedor;
             producto.Show();
-            this.Close();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -68,8 +76,8 @@ namespace Texaco
                 producto.nombre = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 producto.existencia = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 producto.precio_venta = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                producto.panelContenedor = panelContenedor;
                 producto.Show();
-                this.Close();
             }
             else
             {
@@ -87,8 +95,8 @@ namespace Texaco
                 producto.nombre = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 producto.existencia = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 producto.precio_venta = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                producto.panelContenedor = panelContenedor;
                 producto.Show();
-                this.Close();
             }
             else
             {

@@ -26,6 +26,8 @@ namespace Texaco
 
         string query = "";
 
+        public Panel panelContenedor;
+
         public Producto()
         {
             InitializeComponent();
@@ -86,6 +88,7 @@ namespace Texaco
             }
 
             ventanaProductos();
+            ActualizarDatos();
         }
 
         //Retorna true si ya existe un producto con el codigo de barra ingresado
@@ -249,9 +252,8 @@ namespace Texaco
 
         private void ventanaProductos()
         {
-            Productos productos= new Productos();
-            productos.Show();
             this.Close();
+            this.Dispose();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -287,6 +289,17 @@ namespace Texaco
             {
                 e.Handled = true;
                 SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void ActualizarDatos()
+        {
+            Productos formulario;
+            formulario = panelContenedor.Controls.OfType<Productos>().FirstOrDefault();
+            //si el formulario/instancia no existe, creamos nueva instancia y mostramos
+            if (formulario != null)
+            {
+                formulario.CargarDatos();
             }
         }
     }

@@ -105,6 +105,7 @@
             this.txtDpi.Name = "txtDpi";
             this.txtDpi.Size = new System.Drawing.Size(206, 20);
             this.txtDpi.TabIndex = 6;
+            this.txtDpi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDpi_KeyPress);
             // 
             // txtUsuario
             // 

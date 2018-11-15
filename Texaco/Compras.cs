@@ -212,6 +212,7 @@ namespace Texaco
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
         }
 
         private void txtProducto_TextChanged(object sender, EventArgs e)

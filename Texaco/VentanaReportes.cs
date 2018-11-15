@@ -33,6 +33,7 @@ namespace Texaco
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
