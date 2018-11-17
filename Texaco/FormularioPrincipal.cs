@@ -372,6 +372,13 @@ namespace Texaco
             timer1.Start();
             lblHora.Text = DateTime.Now.ToLongTimeString();
             lblFecha.Text = DateTime.Now.ToLongDateString();
+            if (!administrador)
+            {
+                btnEmpleados.Visible = false;
+                btnCompras.Visible = false;
+                btnReportes.Visible = false;
+                btnProductos.Visible = false;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

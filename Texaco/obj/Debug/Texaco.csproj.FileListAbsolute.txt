@@ -7,7 +7,6 @@ C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.csproj.GenerateResour
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.csproj.CoreCompileInputs.cache
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.exe
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.pdb
-C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Administrador.resources
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.Login.resources
 C:\Users\damon\source\repos\Texaco\Texaco\bin\Debug\Npgsql.dll
 C:\Users\damon\source\repos\Texaco\Texaco\obj\Debug\Texaco.csproj.CopyComplete

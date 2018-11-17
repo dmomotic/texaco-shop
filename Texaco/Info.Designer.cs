@@ -35,6 +35,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtContraseña
@@ -67,7 +71,7 @@
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox1.Location = new System.Drawing.Point(125, 152);
+            this.textBox1.Location = new System.Drawing.Point(125, 136);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(412, 20);
             this.textBox1.TabIndex = 13;
@@ -77,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(122, 175);
+            this.label1.Location = new System.Drawing.Point(122, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(415, 13);
             this.label1.TabIndex = 14;
@@ -89,7 +93,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(97, 288);
+            this.panel1.Size = new System.Drawing.Size(97, 389);
             this.panel1.TabIndex = 15;
             // 
             // btnAceptar
@@ -101,7 +105,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.LightGray;
-            this.btnAceptar.Location = new System.Drawing.Point(125, 226);
+            this.btnAceptar.Location = new System.Drawing.Point(125, 320);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(412, 40);
             this.btnAceptar.TabIndex = 16;
@@ -120,13 +124,63 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "DESARROLLADO POR";
             // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Enabled = false;
+            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.DimGray;
+            this.textBox2.Location = new System.Drawing.Point(125, 253);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(412, 20);
+            this.textBox2.TabIndex = 20;
+            this.textBox2.Text = "carloszuniga048@gmail.com";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.DimGray;
+            this.label4.Location = new System.Drawing.Point(122, 276);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(415, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "____________________________________________________________________";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Enabled = false;
+            this.textBox3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.DimGray;
+            this.textBox3.Location = new System.Drawing.Point(125, 214);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(412, 20);
+            this.textBox3.TabIndex = 18;
+            this.textBox3.Text = "Carlos Martinez";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.DimGray;
+            this.label5.Location = new System.Drawing.Point(122, 237);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(415, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "____________________________________________________________________";
+            // 
             // Info
             // 
             this.AcceptButton = this.btnAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.ClientSize = new System.Drawing.Size(561, 288);
+            this.ClientSize = new System.Drawing.Size(561, 389);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.panel1);
@@ -152,5 +206,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label5;
     }
 }
